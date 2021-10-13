@@ -1,8 +1,8 @@
 {
   "name": "10-team-profile-generator",
   "version": "1.0.0",
-  "description": "Profile generator for employees and teams.",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "test"

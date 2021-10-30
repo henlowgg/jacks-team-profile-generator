@@ -1,8 +1,9 @@
 # jacks-team-profile-generator
 
-Walkthrough Vid: 
+Walkthrough Vid: https://watch.screencastify.com/v/oiPQKSwTsfTnxXQRgcG1
+Walkthrough Vid V2: https://www.youtube.com/watch?v=kNXYYSFwWnw 
 
-Github Repo: 
+Github Repo: https://github.com/henlowgg/jacks-team-profile-generator
 
 ## Description
 

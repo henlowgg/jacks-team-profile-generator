@@ -1,7 +1,7 @@
 // adds Employee constructor
-const Employee = require('../lib/employee');
+const Employee = require("../lib/employee");
 
-test('creates an Employee obj', () => {
+test("creates an Employee obj", () => {
   // make an instance of employee
   const employee = new Employee("Jack", 27, "henlowgg@outlook.com");
 
@@ -11,7 +11,7 @@ test('creates an Employee obj', () => {
   expect(employee.getEmail()).toEqual(expect.any(String));
 });
 
-test('retrieves employee Name', () => {
+test("retrieves employee Name", () => {
   // make an instance of employee
   const employee = new Employee("Jack", 27, "henlowgg@outlook.com");
   // testing getName() method

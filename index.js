@@ -1,15 +1,15 @@
 // require createHTML.js for page creation
-const createHTML = require('./src/createHTML')
+const createHTML = require("./src/createHTML");
 
 // node modules
-const fs = require('fs');
-const inquirer = require('inquirer');
+const fs = require("fs");
+const inquirer = require("inquirer");
 
 // empty array to receive team strings
 const teamArr = [];
 
-const Manager = require('./lib/manager');
-const Intern = require('./lib/intern');
+const Manager = require("./lib/manager");
+const Intern = require("./lib/intern");
 const Engineer = require("./lib/engineer");
 
 // prompts for manager input
@@ -36,8 +36,7 @@ const managerPrompt = [
   },
 ];
 
-
-  // prompts for adding employee
+// prompts for adding employee
 const employeePrompt = [
   {
     type: "list",
@@ -80,90 +79,76 @@ const employeePrompt = [
   },
 ];
 
-
 // Prompt User for information
-  // Set user as manager
+// Set user as manager
 const addManager = () => {
-  return inquirer
-    .prompt(managerPrompt)
-    .then((managerResponse) => {
-      const { name, id, email, offNum } = managerResponse;
-      const manager = new Manager (name, id, email, offNum);
-      teamArr.push(manager);
-      console.log(manager);
-    });
-  }
-
+  return inquirer.prompt(managerPrompt).then((managerResponse) => {
+    const { name, id, email, offNum } = managerResponse;
+    const manager = new Manager(name, id, email, offNum);
+    teamArr.push(manager);
+    console.log(manager);
+  });
+};
 
 // function for adding employee and adding to team array
 const addEmployee = () => {
-  return inquirer
-    .prompt(employeePrompt)
-    .then(employeeInfo => {
-      let { name, id, email, role, github, school, confirmAddEmployee } = employeeInfo;
-      let employee;
-      // *Maybe refactor into switch case*
-      if (role === "Engineer") {
-        employee = new Engineer (name, id, email, github);
-        console.log(employee);
-      } else if (role === "Intern") {
-        employee = new Intern (name, id, email, school);
-        console.log(employee);
-      }
-      teamArr.push(employee);
+  return inquirer.prompt(employeePrompt).then((employeeInfo) => {
+    let { name, id, email, role, github, school, confirmAddEmployee } =
+      employeeInfo;
+    let employee;
+    // *Maybe refactor into switch case*
+    if (role === "Engineer") {
+      employee = new Engineer(name, id, email, github);
+      console.log(employee);
+    } else if (role === "Intern") {
+      employee = new Intern(name, id, email, school);
+      console.log(employee);
+    }
+    teamArr.push(employee);
 
-      if (confirmAddEmployee) {
-        return addEmployee(teamArr);
-      } else {
-        return teamArr;
-      }
-    })
+    if (confirmAddEmployee) {
+      return addEmployee(teamArr);
+    } else {
+      return teamArr;
+    }
+  });
 };
 
-const writeFile = data => {
-  fs.writeFile('./dist/index.html', data, err => {
+const writeFile = (data) => {
+  fs.writeFile("./dist/index.html", data, (err) => {
     if (err) {
       console.log(err);
       return;
     } else {
-      console.log("Congratulations, your team profile page has been created. Open index.html to view the page.");
+      console.log(
+        "Congratulations, your team profile page has been created. Open index.html to view the page."
+      );
     }
-  })
+  });
 };
 
 addManager()
   .then(addEmployee)
-  .then(teamArr => {
+  .then((teamArr) => {
     return createHTML(teamArr);
   })
-  .then(teamPage => {
+  .then((teamPage) => {
     return writeFile(teamPage);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
-  })
+  });
 
-  //1. ID:
-  //2. Email:
-  //3. GitHub Username(Engineer):
-  //4. School(Intern):
-  
+//1. ID:
+//2. Email:
+//3. GitHub Username(Engineer):
+//4. School(Intern):
 
-// Need to link GitHub profile to cards.
-
-// Need to link Default Email program when card eamils are clicked.
-
-// Create some way to enter manager name, ID, email, and office number. 
-  // After this has been checked, user can add other profiles.
-  // Present list to select what kind of profile we're making:
-    // 1. Engineer - then return to menu.
-    // 2. Intern - then return to menu.
-
-// Option to finish building the team presented ???
-  // Writes/renders HTML to view team details.
-
-
-
+// Create some way to enter manager name, ID, email, and office number.
+// After this has been checked, user can add other profiles.
+// Present list to select what kind of profile we're making:
+// 1. Engineer - then return to menu.
+// 2. Intern - then return to menu.
 
 // FILE STRUCTURE:
 // .
@@ -172,9 +157,9 @@ addManager()
 // │   ├── Engineer.test.js
 // │   ├── Intern.test.js
 // │   └── Manager.test.js
-// ├── dist/                  // rendered output (HTML) and CSS style sheet      
+// ├── dist/                  // rendered output (HTML) and CSS style sheet
 // ├── lib/                   // classes
-// ├── src/                   // template helper code 
+// ├── src/                   // template helper code
 // ├── .gitignore             // indicates which folders and files Git should ignore
 // ├── index.js               // runs the application
-// └── package.json       
+// └── package.json

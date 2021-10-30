@@ -20,8 +20,8 @@ Feel free to use this project as a starting point for your own project and if yo
 This app is designed to be used in the command line. To use this app, you will need to run the following command: "node index.js"
 This app is intended to be used as a means of constructing a team profile for your team.
 
-<!-- insert screenshots -->
-<!-- insert screenshots -->
+![screenshot](assets/images/webpage.png)
+![screenshot](assets/images/code.png)
 
 ## Credits
 
